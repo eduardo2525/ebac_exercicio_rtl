@@ -6,7 +6,8 @@
 }
 
 .post-comments {
-    
+    width: 100%;
+    height: auto;
 }
 
 .post-comment {

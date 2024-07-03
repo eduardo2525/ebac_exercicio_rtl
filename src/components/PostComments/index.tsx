@@ -17,6 +17,16 @@ const Post = () => {
     return (
         <div>
             <ul className={styles['post-comments']}>
+                <li data-testid='saudacao' className={styles['post-comment']}>
+                    <p className={styles['post-comment-content']}>
+                        {'Olá, Eduardo'}
+                    </p>
+                </li>
+                <li data-testid='pergunta' className={styles['post-comment']}>
+                    <p className={styles['post-comment-content']}>
+                        {'Qual o estilo que música que voçê gosta?'}
+                    </p>
+                </li>
                 {comments.map(({ comment, id }) => (
                     <li className={styles['post-comment']} key={id}>
                         <p className={styles['post-comment-content']}>
