@@ -1,8 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import Post from '../PostComments/index';
 import PostComment from '../Post/index';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { debug } from 'console';
 
 describe('Teste para o componente PostComment', () => {
     it('Deve renderizar o componente corretamente', () => {
