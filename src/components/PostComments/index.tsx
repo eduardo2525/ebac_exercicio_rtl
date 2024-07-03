@@ -10,25 +10,15 @@ const Post = () => {
     function handleAddComment(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const newComment = new Comment(comments.length, tempComment);
-        setTempComment('');
         setComments([...comments, newComment]);
+        setTempComment('');
     }
 
     return (
         <div>
             <ul className={styles['post-comments']}>
-                <li data-testid='saudacao' className={styles['post-comment']}>
-                    <p className={styles['post-comment-content']}>
-                        {'Olá, Eduardo'}
-                    </p>
-                </li>
-                <li data-testid='pergunta' className={styles['post-comment']}>
-                    <p className={styles['post-comment-content']}>
-                        {'Qual o estilo que música que voçê gosta?'}
-                    </p>
-                </li>
                 {comments.map(({ comment, id }) => (
-                    <li className={styles['post-comment']} key={id}>
+                    <li data-testid='lista' className={styles['post-comment']} key={id}>
                         <p className={styles['post-comment-content']}>
                             {comment}
                         </p>
@@ -36,8 +26,8 @@ const Post = () => {
                 ))}
             </ul>
             <form onSubmit={handleAddComment} className={styles['post-comments-form']}>
-                <textarea value={tempComment} onChange={e => setTempComment(e.target.value)} required className={styles['post-comments-form-textarea']} />
-                <button type="submit" className={styles['post-comments-form-button']}>
+                <textarea data-testid="comment-area" value={tempComment} onChange={e => setTempComment(e.target.value)} required className={styles['post-comments-form-textarea']} />
+                <button data-testid="comment-button" type="submit" className={styles['post-comments-form-button']}>
                     Comentar
                 </button>
             </form>

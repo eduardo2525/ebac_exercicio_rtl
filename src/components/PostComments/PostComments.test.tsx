@@ -1,6 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Post from '../PostComments/index';
 import PostComment from '../Post/index';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { debug } from 'console';
 
 describe('Teste para o componente PostComment', () => {
     it('Deve renderizar o componente corretamente', () => {
@@ -9,14 +11,24 @@ describe('Teste para o componente PostComment', () => {
     });
 
     test('Deve adicionar "Olá, Eduardo" na lista', () => {
-        render(<Post />)
-        expect(screen.getByTestId('saudacao')).toBeInTheDocument();
+        render(<Post />);
+        fireEvent.change(screen.getByTestId('comment-area'), {
+            target: {
+                value: 'Olá, Eduardo'
+            }
+        });
+        fireEvent.click(screen.getByTestId('comment-button'));
         expect(screen.getByText('Olá, Eduardo')).toBeInTheDocument();
-    })
-
-    test('Deve adicionar "Qual o estilo que musica que voçê gosta?"', () => {
-        render(<Post />)
-        expect(screen.getByTestId('pergunta')).toBeInTheDocument();
-        expect(screen.getByText('Qual o estilo que música que voçê gosta?')).toBeInTheDocument()
+    });
+    
+    test('Deve adicionar "Olá, Maria" na lista', () => {
+        render(<Post />);
+        fireEvent.change(screen.getByTestId('comment-area'), {
+            target: {
+                value: 'Olá, Maria'
+            }
+        });
+        fireEvent.click(screen.getByTestId('comment-button'));
+        expect(screen.getByText('Olá, Maria')).toBeInTheDocument()
     })
 });
